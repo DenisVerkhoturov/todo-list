@@ -18,6 +18,12 @@
     <context:component-scan base-package="leoscream.todolist.dao"/>
     <context:component-scan base-package="leoscream.todolist.model"/>
 
+    <mvc:default-servlet-handler/>
+    <mvc:resources mapping="/static/**" location="/static/"/>
+    <mvc:annotation-driven/>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/pages/"/>
         <property name="suffix" value=".jsp"/>
@@ -50,14 +56,8 @@
         </property>
     </bean>
 
-    <tx:annotation-driven transaction-manager="transactionManager"/>
-
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
     </bean>
-
-    <mvc:default-servlet-handler/>
-    <mvc:resources mapping="/static/**" location="/static/"/>
-    <mvc:annotation-driven/>
 
 </beans>
