@@ -3,8 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ page session="false" %>
-<c:url value="/static/css/normalize.css" var="normalizeCss" />
-<c:url value="/static/css/style.css" var="mainCss" />
+<c:url value="/static/css/normalize.css" var="normalizeCss"/>
+<c:url value="/static/css/style.css" var="mainCss"/>
 <c:url var="addAction" value="/add"/>
 
 <html>
@@ -14,30 +14,23 @@
     <title>Редактирование</title>
 </head>
 <body>
+<header></header>
 
-<form:form action="${addAction}" commandName="task">
+<main>
+    <form:form action="${addAction}" commandName="task">
+        <form:input path="name" cssClass="form-field task-name" placeholder="Название"/>
+        <form:textarea path="description" cssClass="form-field task-description" placeholder="Описние"/>
 
-    <div class="form-field">
-        <form:label path="name">
-            <spring:message text="name"/>
-        </form:label>
-        <form:input path="name"/>
-    </div>
-    <div class="form-field">
-        <form:label path="description">
-            <spring:message text="description"/>
-        </form:label>
-        <form:input path="description"/>
-    </div>
-    <div class="form-field">
         <form:label path="done">
             <spring:message text="Выполнено"/>
         </form:label>
         <form:input path="done"/>
-    </div>
 
-    <form:hidden path="id"/>
-    <input type="submit" value="<spring:message text="Сохранить"/>"/>
-</form:form>
+        <form:hidden path="id"/>
+        <input type="submit" value="<spring:message text="Сохранить"/>"/>
+    </form:form>
+</main>
+
+<footer></footer>
 </body>
 </html>

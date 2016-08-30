@@ -15,42 +15,50 @@
     <title>Задания</title>
 </head>
 <body>
-<section class="tasklist">
-    <h1>Задания</h1>
+<header></header>
 
-    <form:form action="${addAction}" cssClass="tasklist-item" commandName="task">
-        <form:input path="name" cssClass="form-field task-name" placeholder="Название"/>
-        <form:textarea path="description" cssClass="form-field task-description" placeholder="Описние"/>
-        <div class="task-operations">
-            <input cssClass="form-field" type="submit" value="<spring:message text="Добавить задание"/>"/>
-        </div>
-    </form:form>
+<main>
+    <section class="tasklist">
+        <h1>Задания</h1>
 
-    <c:choose>
-        <c:when test="${!empty tasks}">
-            <c:forEach items="${tasks}" var="task">
-                <div class="tasklist-item task">
-                    <a class="task-name" href="/task/${task.id}">${task.name}</a>
-                    <p class="task-description">${task.description}</p>
-                    <div class="task-operations">
-                        <a href="<c:url value='/edit/${task.id}'/>">Редактировать</a>
-                        <a href="<c:url value='/remove/${task.id}'/>">Удалить</a>
-                        <c:choose>
-                            <c:when test="${task.done}">
-                                <a href="<c:url value='/task/${task.id}'/>">Пометить как невыполненное</a>
-                            </c:when>
-                            <c:otherwise>
-                                <a href="<c:url value='/remove/${task.id}'/>">Пометить как выполненное</a>
-                            </c:otherwise>
-                        </c:choose>
-                    </div>
-                </div>
-            </c:forEach>
-        </c:when>
-        <c:otherwise>
-            <p>Нет ни одного задания, к которому можно было бы приступить... <a href="${test}">Выдумать задачи</a></p>
-        </c:otherwise>
-    </c:choose>
-</section>
+        <form:form action="${addAction}" cssClass="task" commandName="task">
+            <form:input path="name" cssClass="form-field task-name" placeholder="Название"/>
+            <form:textarea path="description" cssClass="form-field task-description" placeholder="Описние"/>
+            <form:checkbox path="done" cssClass="form-field task-description"/>
+            <div class="task-operations">
+                <input type="submit" value="<spring:message text="Добавить задание"/>"/>
+            </div>
+        </form:form>
+
+        <c:choose>
+            <c:when test="${!empty tasks}">
+                <c:forEach items="${tasks}" var="task">
+                    <article class="task">
+                        <a class="task-name" href="/task/${task.id}"><h2>${task.name}</h2></a>
+                        <p class="task-description">${task.description}</p>
+                        <div class="task-operations">
+                            <a href="<c:url value='/edit/${task.id}'/>">Редактировать</a>
+                            <a href="<c:url value='/remove/${task.id}'/>">Удалить</a>
+                            <c:choose>
+                                <c:when test="${task.done}">
+                                    <a href="<c:url value='/task/${task.id}'/>">Пометить как невыполненное</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="<c:url value='/remove/${task.id}'/>">Пометить как выполненное</a>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
+                    </article>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <p>Нет ни одного задания, к которому можно было бы приступить... <a href="${test}">Выдумать задачи</a>
+                </p>
+            </c:otherwise>
+        </c:choose>
+    </section>
+</main>
+
+<footer></footer>
 </body>
 </html>

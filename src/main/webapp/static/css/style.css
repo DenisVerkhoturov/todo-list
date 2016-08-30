@@ -4,12 +4,10 @@ input, textarea {
     border-bottom: 1px dotted blue;
 }
 
-input:active, textarea:active {
-    border-bottom
-}
-
-input:placeholder, textarea:placeholder {
-    color: red;
+main {
+    min-width: 780px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .tasklist {
@@ -18,12 +16,9 @@ input:placeholder, textarea:placeholder {
     justify-content: space-between;
     align-items: flex-start;
     align-content: space-between;
-    min-width: 780px;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
-.tasklist-item {
+.task {
     display: flex;
     flex-flow: column nowrap;
     width: 90%;
@@ -32,14 +27,14 @@ input:placeholder, textarea:placeholder {
     outline: 1px dotted red;
 }
 
-.tasklist-item .task-name {
+.task .task-name {
     display: block;
     text-decoration: none;
     color: blue;
-    padding: 10px 25px
+    padding: 0px 25px;
 }
 
-.tasklist-item .task-description {
+.task .task-description {
     border-left: 5px solid gray;
     padding: 5px 20px;
 }

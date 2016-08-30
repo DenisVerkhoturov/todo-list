@@ -3,8 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ page session="false" %>
-<c:url value="/static/css/normalize.css" var="normalizeCss" />
-<c:url value="/static/css/style.css" var="mainCss" />
+<c:url value="/static/css/normalize.css" var="normalizeCss"/>
+<c:url value="/static/css/style.css" var="mainCss"/>
 
 <html>
 <head>
@@ -13,12 +13,18 @@
     <title>${task.name}</title>
 </head>
 <body>
-<article>
-    <h1>Задание: ${task.name}</h1>
+<header></header>
 
-    <p>
-        ${task.description}
-    </p>
-</article>
+<main>
+    <article>
+        <h1 class="task-name">Задание: ${task.name}</h1>
+
+        <p class="description">
+            ${task.description}
+        </p>
+    </article>
+</main>
+
+<footer></footer>
 </body>
 </html>
