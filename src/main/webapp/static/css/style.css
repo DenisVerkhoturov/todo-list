@@ -1,0 +1,45 @@
+input, textarea {
+    outline: none;
+    border: none;
+    border-bottom: 1px dotted blue;
+}
+
+input:active, textarea:active {
+    border-bottom
+}
+
+input:placeholder, textarea:placeholder {
+    color: red;
+}
+
+.tasklist {
+    display:  flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: space-between;
+    min-width: 780px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tasklist-item {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 90%;
+    padding: 15px 5%;
+    margin-bottom: 15px;
+    outline: 1px dotted red;
+}
+
+.tasklist-item .task-name {
+    display: block;
+    text-decoration: none;
+    color: blue;
+    padding: 10px 25px
+}
+
+.tasklist-item .task-description {
+    border-left: 5px solid gray;
+    padding: 5px 20px;
+}
