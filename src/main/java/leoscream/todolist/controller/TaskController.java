@@ -67,7 +67,7 @@ public class TaskController
 	{
 		this.taskService.addTask(new Task("30 уровень", "Дойти до 30 уровня на JavaRush", true));
 		this.taskService.addTask(new Task("Тестовое задание", "Сделать todo лист по ТЗ из тестового задания", true));
-		this.taskService.addTask(new Task("Допуск к реальнмоу проекту", "Заполнить анкету и отправить тестовое задания на проверку в JavaRush", true));
+		this.taskService.addTask(new Task("Допуск к реальному проекту", "Заполнить анкету и отправить тестовое задания на проверку в JavaRush", true));
 		this.taskService.addTask(new Task("Осенняя стажировка", "Присоедениться к осенней стажировке JavaRush", false));
 		this.taskService.addTask(new Task("Реальный проект", "Успешно закончить реальный проект", false));
 

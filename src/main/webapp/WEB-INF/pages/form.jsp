@@ -17,14 +17,15 @@
 <header></header>
 
 <main>
-    <form:form action="${addAction}" commandName="task">
-        <form:input path="name" cssClass="form-field task-name" placeholder="Название"/>
-        <form:textarea path="description" cssClass="form-field task-description" placeholder="Описние"/>
+    <h1>Задача: ${task.name}</h1>
+    <form:form cssClass="task" action="${addAction}" commandName="task">
+        <form:input path="name" cssClass="task-name" placeholder="Название"/>
+        <form:textarea path="description" cssClass="task-description" placeholder="Описние"/>
 
         <form:label path="done">
             <spring:message text="Выполнено"/>
         </form:label>
-        <form:input path="done"/>
+        <form:checkbox path="done"/>
 
         <form:hidden path="id"/>
         <input type="submit" value="<spring:message text="Сохранить"/>"/>

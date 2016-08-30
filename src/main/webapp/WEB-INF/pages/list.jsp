@@ -24,9 +24,9 @@
         <form:form action="${addAction}" cssClass="task" commandName="task">
             <form:input path="name" cssClass="form-field task-name" placeholder="Название"/>
             <form:textarea path="description" cssClass="form-field task-description" placeholder="Описние"/>
-            <form:checkbox path="done" cssClass="form-field task-description"/>
+            <form:checkbox path="done" cssClass="form-field task-done"/>
             <div class="task-operations">
-                <input type="submit" value="<spring:message text="Добавить задание"/>"/>
+                <button class="button" type="submit"><spring:message text="Добавить задание"/></button>
             </div>
         </form:form>
 
@@ -37,14 +37,14 @@
                         <a class="task-name" href="/task/${task.id}"><h2>${task.name}</h2></a>
                         <p class="task-description">${task.description}</p>
                         <div class="task-operations">
-                            <a href="<c:url value='/edit/${task.id}'/>">Редактировать</a>
-                            <a href="<c:url value='/remove/${task.id}'/>">Удалить</a>
+                            <a class="button" href="<c:url value='/edit/${task.id}'/>">Редактировать</a>
+                            <a class="button" href="<c:url value='/remove/${task.id}'/>">Удалить</a>
                             <c:choose>
                                 <c:when test="${task.done}">
-                                    <a href="<c:url value='/task/${task.id}'/>">Пометить как невыполненное</a>
+                                    <a class="button" href="<c:url value='/task/${task.id}'/>">Пометить как невыполненное</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="<c:url value='/remove/${task.id}'/>">Пометить как выполненное</a>
+                                    <a class="button" href="<c:url value='/remove/${task.id}'/>">Пометить как выполненное</a>
                                 </c:otherwise>
                             </c:choose>
                         </div>

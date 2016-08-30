@@ -1,7 +1,37 @@
-input, textarea {
+@font-face {
+    font-family: "PT Sans Narrow";
+    src: url("/static/fonts/ptsansnarrow.woff");
+}
+body {
+    font-family: PT Sans Narrow;
+    color: #212121;
+}
+
+input, textarea, button {
     outline: none;
     border: none;
-    border-bottom: 1px dotted blue;
+    border-bottom: 1px dotted #C5CAE9;
+    margin-bottom: 15px;
+    padding-bottom: 0;
+    transition: padding-bottom .2s ease-in;
+    color: #212121;
+}
+
+input:hover, textarea:hover {
+    border-bottom: 1px dotted #303F9F;
+}
+
+input:focus, textarea:focus {
+    padding-bottom: 5px;
+    transition: padding-bottom .2s ease-in;
+    border-bottom: 1px solid #3F51B5;
+}
+
+input::-webkit-input-placeholder,
+input::-moz-placeholder,
+textarea::-webkit-input-placeholder,
+textarea::-moz-placeholder {
+    color: #757575;
 }
 
 main {
@@ -10,31 +40,52 @@ main {
     margin: 0 auto;
 }
 
+h1 {
+    padding: 0 5%;
+}
+
 .tasklist {
     display:  flex;
     flex-flow: column wrap;
     justify-content: space-between;
-    align-items: flex-start;
-    align-content: space-between;
+    align-items: stretch;
 }
 
 .task {
     display: flex;
     flex-flow: column nowrap;
-    width: 90%;
     padding: 15px 5%;
     margin-bottom: 15px;
-    outline: 1px dotted red;
 }
 
 .task .task-name {
     display: block;
     text-decoration: none;
-    color: blue;
-    padding: 0px 25px;
+    color: #212121;
+    padding-left: 25px;
 }
 
 .task .task-description {
-    border-left: 5px solid gray;
+    border-left: 5px solid #C5CAE9;
     padding: 5px 20px;
+}
+
+.task-operations {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.button {
+    padding: 5px;
+    text-decoration: none;
+    color: #757575;
+}
+
+.button:hover {
+    color: #303F9F;
+}
+
+.button:active {
+    color: #212121;
 }
