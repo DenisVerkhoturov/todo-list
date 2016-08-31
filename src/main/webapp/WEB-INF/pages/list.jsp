@@ -41,10 +41,12 @@
                             <a class="button" href="<c:url value='/remove/${task.id}'/>">Удалить</a>
                             <c:choose>
                                 <c:when test="${task.done}">
-                                    <a class="button" href="<c:url value='/task/${task.id}'/>">Пометить как невыполненное</a>
+                                    <a class="button" href="<c:url value='/task/${task.id}'/>">Пометить как
+                                        невыполненное</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <a class="button" href="<c:url value='/remove/${task.id}'/>">Пометить как выполненное</a>
+                                    <a class="button" href="<c:url value='/remove/${task.id}'/>">Пометить как
+                                        выполненное</a>
                                 </c:otherwise>
                             </c:choose>
                         </div>
@@ -56,6 +58,21 @@
                 </p>
             </c:otherwise>
         </c:choose>
+
+        <c:if test="${pagesCount != 0}">
+            <div class="pagination">
+                <c:forEach var="pageNumber" begin="1" end="${pagesCount}">
+                    <c:choose>
+                        <c:when test="${pageNumber == currentPage}">
+                            <a class="button active">${pageNumber}</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a class="button" href="<c:url value='/tasks?page=${pageNumber}'/>">${pageNumber}</a>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+            </div>
+        </c:if>
     </section>
 </main>
 

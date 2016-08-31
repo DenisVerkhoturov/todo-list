@@ -6,13 +6,17 @@ import java.util.List;
 
 public interface TaskDao
 {
-    public void addTask(Task task);
+    void addTask(Task task);
 
-    public void updateTask(Task task);
+    void updateTask(Task task);
 
-    public void removeTask(int id);
+    void removeTask(int id);
 
-    public Task getTaskById(int id);
+    Number count();
 
-    public List<Task> listTasks();
+    Task getTaskById(int id);
+
+    List<Task> listTasks();
+
+    List<Task> listTasks(int offset, int count);
 }

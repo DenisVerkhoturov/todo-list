@@ -3,24 +3,26 @@ package leoscream.todolist.controller;
 import org.springframework.ui.Model;
 import leoscream.todolist.model.Task;
 import leoscream.todolist.service.TaskService;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 public class TaskController
 {
+	private final int TASKS_PER_PAGE = 3;
+
 	@Autowired()
 	private TaskService taskService;
 
-	@RequestMapping(value = {"/index", "/"}, method = RequestMethod.GET)
-	public String listTask(Model model)
+	@RequestMapping(value = {"/tasks", "/"}, method = RequestMethod.GET)
+	public String listTask(Model model,
+	                       @RequestParam(value = "page", required = false, defaultValue = "1") int page)
 	{
 		model.addAttribute("task", new Task());
-		model.addAttribute("tasks", this.taskService.listTasks());
+		model.addAttribute("tasks", this.taskService.listTasks(page - 1, TASKS_PER_PAGE));
+		model.addAttribute("currentPage", page);
+		model.addAttribute("pagesCount", Math.ceil((double) this.taskService.count().intValue() / TASKS_PER_PAGE));
 
 		return "list";
 	}
@@ -34,7 +36,7 @@ public class TaskController
 			this.taskService.updateTask(task);
 		}
 
-		return "redirect:/index";
+		return "redirect:/tasks";
 	}
 
 	@RequestMapping("/remove/{id}")
@@ -42,7 +44,7 @@ public class TaskController
 	{
 		this.taskService.removeTask(id);
 
-		return "redirect:/index";
+		return "redirect:/tasks";
 	}
 
 	@RequestMapping("/edit/{id}")
@@ -71,6 +73,6 @@ public class TaskController
 		this.taskService.addTask(new Task("Осенняя стажировка", "Присоедениться к осенней стажировке JavaRush", false));
 		this.taskService.addTask(new Task("Реальный проект", "Успешно закончить реальный проект", false));
 
-		return "redirect:/index";
+		return "redirect:/tasks";
 	}
 }

@@ -37,6 +37,13 @@ public class TaskServiceImpl implements TaskService
 
 	@Override
 	@Transactional
+	public Number count()
+	{
+		return this.taskDao.count();
+	}
+
+	@Override
+	@Transactional
 	public Task getTaskById(int id)
 	{
 		return this.taskDao.getTaskById(id);
@@ -47,5 +54,12 @@ public class TaskServiceImpl implements TaskService
 	public List<Task> listTasks()
 	{
 		return this.taskDao.listTasks();
+	}
+
+	@Override
+	@Transactional
+	public List<Task> listTasks(int pageNumber, int perPage)
+	{
+		return this.taskDao.listTasks(pageNumber * perPage, perPage);
 	}
 }

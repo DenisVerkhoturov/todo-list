@@ -12,7 +12,11 @@ public interface TaskService
 
 	void removeTask(int id);
 
+	Number count();
+
 	Task getTaskById(int id);
 
 	List<Task> listTasks();
+
+	List<Task> listTasks(int pageNumber, int perPage);
 }

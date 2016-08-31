@@ -3,6 +3,7 @@ package leoscream.todolist.dao;
 import leoscream.todolist.model.Task;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -40,6 +41,11 @@ public class TaskDaoImpl extends AbstractDao implements TaskDao
 		logger.info("Task successfully removed. Task details: " + task);
 	}
 
+	public Number count()
+	{
+		return (Number) this.getSession().createCriteria(Task.class).setProjection(Projections.rowCount()).uniqueResult();
+	}
+
 	@Override
 	public Task getTaskById(int id)
 	{
@@ -57,6 +63,21 @@ public class TaskDaoImpl extends AbstractDao implements TaskDao
 		Session session = this.getSession();
 		Criteria criteria = session.createCriteria(Task.class);
 		List<Task> taskList = criteria.list();
+
+		for (Task task : taskList) {
+			logger.info("Task list: " + task);
+		}
+
+		return taskList;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Task> listTasks(int offset, int count)
+	{
+		Session session = this.getSession();
+		Criteria criteria = session.createCriteria(Task.class);
+		List<Task> taskList = criteria.setFirstResult(offset).setMaxResults(count).list();
 
 		for (Task task : taskList) {
 			logger.info("Task list: " + task);
